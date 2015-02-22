@@ -1,7 +1,6 @@
 package com.cse455.pokerlog.pokerlog;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,12 +23,12 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private static final int EDIT = 0, DELETE = 1;
+    private static final int  DELETE = 1;
 
-    EditText nameTxt, phoneTxt, emailTxt;
+
+    EditText nameTxt, phoneTxt, emailTxt, addressTxt;
     List<Contact> Contacts = new ArrayList<Contact>();
     ListView contactListView;
-    Uri imageUri = Uri.parse("android.resource://com.cse455.pokerlog.pokerlog/drawable/no_user_logo.png");
     DatabaseHandler dbHandler;
     int longClickedItemIndex;
     ArrayAdapter<Contact> contactAdapter;
@@ -42,6 +41,7 @@ public class MainActivity extends Activity {
         nameTxt = (EditText) findViewById(R.id.txtName);
         phoneTxt = (EditText) findViewById(R.id.txtPhone);
         emailTxt = (EditText) findViewById(R.id.txtEmail);
+        addressTxt = (EditText) findViewById(R.id.txtAddress);
         contactListView = (ListView) findViewById(R.id.listView);
         dbHandler = new DatabaseHandler(getApplicationContext());
 
@@ -73,12 +73,16 @@ public class MainActivity extends Activity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Contact contact = new Contact(dbHandler.getContactsCount(), String.valueOf(nameTxt.getText()), String.valueOf(phoneTxt.getText()), String.valueOf(emailTxt.getText()));
+                Contact contact = new Contact(dbHandler.getContactsCount(), String.valueOf(nameTxt.getText()), String.valueOf(phoneTxt.getText()), String.valueOf(emailTxt.getText()), String.valueOf(addressTxt.getText()));
                 if (!contactExists(contact)) {
                     dbHandler.createContact(contact);
                     Contacts.add(contact);
                     contactAdapter.notifyDataSetChanged();
                     Toast.makeText(getApplicationContext(), String.valueOf(nameTxt.getText()) + " has been added to your Contacts!", Toast.LENGTH_SHORT).show();
+                    ((EditText) findViewById(R.id.txtName)).setText("");
+                    ((EditText) findViewById(R.id.txtPhone)).setText("");
+                    ((EditText) findViewById(R.id.txtEmail)).setText("");
+                    ((EditText) findViewById(R.id.txtAddress)).setText("");
                     return;
                 }
                 Toast.makeText(getApplicationContext(), String.valueOf(nameTxt.getText()) + " already exists. Please use a different name.", Toast.LENGTH_SHORT).show();
@@ -94,7 +98,7 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 addBtn.setEnabled(String.valueOf(nameTxt.getText()).trim().length() > 0);
-        }
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -103,7 +107,8 @@ public class MainActivity extends Activity {
         });
 
 
-        if (dbHandler.getContactsCount() != 0) Contacts.addAll(dbHandler.getAllContacts());
+        if (dbHandler.getContactsCount() != 0)
+            Contacts.addAll(dbHandler.getAllContacts());
 
         populateList();
     }
@@ -118,9 +123,6 @@ public class MainActivity extends Activity {
 
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case EDIT:
-                // TODO: Implement editing a contact
-                break;
             case DELETE:
                 dbHandler.deleteContact(Contacts.get(longClickedItemIndex));
                 Contacts.remove(longClickedItemIndex);
@@ -166,7 +168,8 @@ public class MainActivity extends Activity {
             phone.setText(currentContact.getPhone());
             TextView email = (TextView) view.findViewById(R.id.emailAddress);
             email.setText(currentContact.getEmail());
-
+            TextView address = (TextView) view.findViewById(R.id.cAddress);
+            address.setText(currentContact.getAddress());
 
             return view;
         }
@@ -177,5 +180,5 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+
 }
