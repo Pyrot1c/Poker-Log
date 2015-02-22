@@ -59,14 +59,14 @@ public class MainActivity extends Activity {
 
         tabHost.setup();
 
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("creator");
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("Player Register");
         tabSpec.setContent(R.id.tabCreator);
-        tabSpec.setIndicator("Creator");
+        tabSpec.setIndicator("Player Register");
         tabHost.addTab(tabSpec);
 
-        tabSpec = tabHost.newTabSpec("list");
+        tabSpec = tabHost.newTabSpec("Roster");
         tabSpec.setContent(R.id.tabContactList);
-        tabSpec.setIndicator("List");
+        tabSpec.setIndicator("Roster");
         tabHost.addTab(tabSpec);
 
         final Button addBtn = (Button) findViewById(R.id.btnAdd);
