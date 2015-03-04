@@ -1,7 +1,9 @@
 package com.cse455.pokerlog.pokerlog;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
@@ -33,10 +35,38 @@ public class MainActivity extends Activity {
     int longClickedItemIndex;
     ArrayAdapter<Contact> contactAdapter;
 
+    // Navigation drawer variables
+    private String[] mNavigationItems;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize navigation
+        mNavigationItems = getResources().getStringArray(R.array.navigationstrings);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawerlistview_item, mNavigationItems));
+
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                switch(position) {
+                    case 0:
+                        intent.setClass(view.getContext(), MainActivity.class);
+                        break;
+                    case 1:
+                        intent.setClass(view.getContext(), StarActivity.class);
+                        break;
+                    default:
+                        intent.setClass(view.getContext(), SplashScreen.class);
+                }
+                startActivity(intent);
+            }
+        });
 
         nameTxt = (EditText) findViewById(R.id.txtName);
         phoneTxt = (EditText) findViewById(R.id.txtPhone);
