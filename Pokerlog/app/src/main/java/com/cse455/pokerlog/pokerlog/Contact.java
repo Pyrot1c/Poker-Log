@@ -32,6 +32,5 @@ public class Contact {
         return _address;
     }
 
-
 }
 
