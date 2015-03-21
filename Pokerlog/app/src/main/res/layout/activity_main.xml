@@ -1,134 +1,141 @@
+<!--Navigation Sidebar Support-->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <!--Main Layout-->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cse455.pokerlog.pokerlog.MainActivity"
+        android:orientation="vertical">
 
-    <TabHost
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/tabHost"
-        android:layout_gravity="left|center_vertical">
-
-        <LinearLayout
+        <!--Tab Support-->
+        <TabHost
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical">
+            android:id="@+id/tabHost"
+            android:layout_gravity="left|center_vertical">
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-            </TabWidget>
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <LinearLayout
-                    android:id="@+id/tabCreator"
+                <TabWidget
+                    android:id="@android:id/tabs"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
+                </TabWidget>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Player Register"
-                        android:id="@+id/lblCreatorTitle"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:ems="10"
-                        android:id="@+id/txtName"
-                        android:layout_marginTop="20dp"
-                        android:hint="Contact Name"/>
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="phone"
-                        android:ems="10"
-                        android:id="@+id/txtPhone"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:hint="Phone Number"/>
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:id="@+id/txtEmail"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress"/>
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:id="@+id/txtAddress"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:hint="Address"
-                        android:inputType="textPostalAddress"/>
-
-                    <Button
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Add Contact"
-                        android:id="@+id/btnAdd"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:enabled="false"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tabContactList"
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical">
+                    android:layout_height="fill_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Registered Players"
-                        android:id="@+id/textView"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ListView
+                    <!--Creator Layout-->
+                    <LinearLayout
+                        android:id="@+id/tabCreator"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/listView"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
+                        android:orientation="vertical">
 
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Player Register"
+                            android:id="@+id/lblCreatorTitle"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"/>
 
-</LinearLayout>
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:ems="10"
+                            android:id="@+id/txtName"
+                            android:layout_marginTop="20dp"
+                            android:hint="Contact Name"/>
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:ems="10"
+                            android:id="@+id/txtPhone"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:hint="Phone Number"/>
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:id="@+id/txtEmail"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"/>
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:id="@+id/txtAddress"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:hint="Address"
+                            android:inputType="textPostalAddress"/>
+
+                        <Button
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="Add Contact"
+                            android:id="@+id/btnAdd"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <!--Contact List Layout-->
+                    <LinearLayout
+                        android:id="@+id/tabContactList"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Registered Players"
+                            android:id="@+id/textView"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"/>
+
+                        <ListView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/listView"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+            
+            </LinearLayout>
+
+        </TabHost>
+
+    </LinearLayout>
+
+    <!--Navigation Sidebar-->
     <ListView android:id="@+id/left_drawer"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#111"/>
+        style="@style/DrawerStyle"/>
+        
 </android.support.v4.widget.DrawerLayout>

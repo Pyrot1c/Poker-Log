@@ -6,10 +6,17 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
-    <string name="title_activity_star">StarActivity</string>
+    <string name="title_activity_star">Star Keeper</string>
+    <string name="title_activity_sheet">Game Overview</string>
+    <string name="title_activity_roster">Player Roster</string>
+    <string name="title_activity_total">Totals</string>
 
     <string-array name="navigationstrings">
         <item>Roster</item>
+        <item>Game Overview</item>
         <item>Star Keeper</item>
+        <item>Totals</item>
     </string-array>
+
+
 </resources>
