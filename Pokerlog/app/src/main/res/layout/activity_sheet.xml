@@ -92,7 +92,8 @@
                                 android:inputType="numberSigned"
                                 android:id="@+id/inputPotAmount"
                                 android:hint="+/-"
-                                android:imeOptions="actionDone"/>
+                                android:imeOptions="actionDone"
+                                android:maxLength="5"/>
 
                             <TextView
                                 android:layout_width="96dp"
@@ -163,6 +164,7 @@
                                 android:inputType="number"
                                 android:id="@+id/inputFoodCost"
                                 android:hint="$"
+                                android:maxLength="3"
                                 android:imeOptions="actionDone"/>
 
                             <Button
@@ -293,6 +295,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:inputType="textPersonName"
+                                android:maxLength="64"
                                 android:imeOptions="actionNext"
                                 android:hint="Winner"
                                 android:id="@+id/inputWinner"/>
@@ -303,6 +306,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:inputType="textPersonName"
+                                android:maxLength="64"
                                 android:imeOptions="actionNext"
                                 android:hint="Loser"
                                 android:id="@+id/inputLoser"/>
@@ -315,7 +319,8 @@
                                 android:inputType="number"
                                 android:imeOptions="actionDone"
                                 android:hint="$"
-                                android:id="@+id/inputSideBetAmount"/>
+                                android:id="@+id/inputSideBetAmount"
+                                android:maxLength="3"/>
 
                             <Button
                                 android:layout_width="64dp"

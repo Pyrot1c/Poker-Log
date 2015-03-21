@@ -16,8 +16,8 @@ public class Star {
         _count = count;
     }
 
-    void decrement() { --_count; }
-    void increment() { ++_count; }
+    void decrement() { if (_count > 0) --_count; }
+    void increment() { if (_count < 1000) ++_count; }
 
     public int getId() { return _id; }
 

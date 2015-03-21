@@ -122,8 +122,16 @@ public class SheetActivity extends ActionBarActivity {
                     if (v.getText().toString().length() == 0)
                         return false;
 
+                    // Check if the value is within bounds
+                    int new_value = pot_total + Integer.parseInt(v.getText().toString());
+
+                    if (new_value > 9999 || new_value < 0) {
+                        Toast.makeText(getApplicationContext    (), "New value out of bounds, try again.", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+
                     // Update the pot
-                    dbHandler.updatePot(pot_total + Integer.parseInt(v.getText().toString()));
+                    dbHandler.updatePot(new_value);
                     pot_total = dbHandler.getPotTotal();
                     pot_current = calcPotCurrent();
                     updatePotView();

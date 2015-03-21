@@ -59,6 +59,7 @@
                             android:ems="10"
                             android:id="@+id/txtName"
                             android:layout_marginTop="20dp"
+                            android:maxLength="64"
                             android:hint="Contact Name"/>
 
                         <EditText
@@ -69,6 +70,7 @@
                             android:id="@+id/txtPhone"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp"
+                            android:maxLength="16"
                             android:hint="Phone Number"/>
 
                         <EditText
@@ -79,6 +81,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp"
                             android:hint="Email"
+                            android:maxLength="64"
                             android:inputType="textEmailAddress"/>
 
                         <EditText
@@ -89,6 +92,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp"
                             android:hint="Address"
+                            android:maxLength="64"
                             android:inputType="textPostalAddress"/>
 
                         <Button

@@ -18,15 +18,19 @@ public class Score {
     }
 
     public void takeFromPot() {
-        _debt += 5;
+        if (_debt < 1000)_debt += 5;
     }
 
     public void returnToPot() {
-        _debt -= 5;
+        if (_debt > -1000)_debt -= 5;
     }
 
-    public void setWinnings(int winnings) {
+    public boolean setWinnings(int winnings) {
+        if (winnings > 1000)
+                return false;
+
         _winnings = winnings;
+        return true;
     }
 
     public int getId() { return _id; }
