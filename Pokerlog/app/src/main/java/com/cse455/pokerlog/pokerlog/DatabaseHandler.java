@@ -803,7 +803,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         int pot_value = 0;
 
         if (cursor.moveToFirst())
-            pot_value = cursor.getInt(0);
+            pot_value = cursor.getInt(1);
 
         // Clean up
         cursor.close();

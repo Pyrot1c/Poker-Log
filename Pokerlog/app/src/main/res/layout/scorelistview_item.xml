@@ -22,23 +22,14 @@
             android:text="X"
             android:id="@+id/chipCount"/>
 
-        <TextView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="X"
-            android:id="@+id/winningsCount"/>
-
         <EditText
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="numberSigned"
+            android:inputType="number"
             android:id="@+id/addAmount"
-            android:hint="+/-"
+            android:hint="#"
             android:imeOptions="actionDone"/>
 
         <TextView

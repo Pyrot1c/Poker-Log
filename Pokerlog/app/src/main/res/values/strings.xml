@@ -12,7 +12,7 @@
     <string name="title_activity_total">Totals</string>
 
     <string-array name="navigationstrings">
-        <item>Roster</item>
+        <item>Player Roster</item>
         <item>Game Overview</item>
         <item>Star Keeper</item>
         <item>Totals</item>

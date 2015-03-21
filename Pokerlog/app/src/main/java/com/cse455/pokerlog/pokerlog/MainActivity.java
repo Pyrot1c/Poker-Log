@@ -108,6 +108,20 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // Only all button presses if name is non-empty
+        nameTxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                addBtn.setEnabled(String.valueOf(nameTxt.getText()).trim().length() > 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
         // Initialize the contact list view
         contact_list.addAll(dbHandler.getAllContacts());
         contactAdapter = new ContactListAdapter();

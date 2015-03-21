@@ -25,8 +25,8 @@ public class Score {
         _debt -= 5;
     }
 
-    public void updateWinnings(int amount) {
-        _winnings += amount;
+    public void setWinnings(int winnings) {
+        _winnings = winnings;
     }
 
     public int getId() { return _id; }

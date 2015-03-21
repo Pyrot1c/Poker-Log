@@ -118,6 +118,10 @@ public class SheetActivity extends ActionBarActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    // Do nothing if there is no input
+                    if (v.getText().toString().length() == 0)
+                        return false;
+
                     // Update the pot
                     dbHandler.updatePot(pot_total + Integer.parseInt(v.getText().toString()));
                     pot_total = dbHandler.getPotTotal();
@@ -422,12 +426,8 @@ public class SheetActivity extends ActionBarActivity {
             TextView player = (TextView) view.findViewById(R.id.playerName);
             player.setText(currentScore.getPlayer().getName());
 
-            // Calculate chip count
-            TextView chips = (TextView) view.findViewById(R.id.chipCount);
-            chips.setText(Integer.toString(calcChips(currentScore)));
-
             // Get winnings
-            TextView winnings = (TextView) view.findViewById(R.id.winningsCount);
+            TextView winnings = (TextView) view.findViewById(R.id.chipCount);
             winnings.setText(Integer.toString(currentScore.getWinnings()));
 
             // Get debt
@@ -441,8 +441,12 @@ public class SheetActivity extends ActionBarActivity {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        // Do nothing if there is no input
+                        if (v.getText().toString().length() == 0)
+                            return false;
+
                         // Update the winnings
-                        score_list.get((int) v.getTag()).updateWinnings(Integer.parseInt(v.getText().toString()));
+                        score_list.get((int) v.getTag()).setWinnings(Integer.parseInt(v.getText().toString()));
                         dbHandler.updateScore(score_list.get((int) v.getTag()));
                         scoreAdapter.notifyDataSetChanged();
 
@@ -540,10 +544,6 @@ public class SheetActivity extends ActionBarActivity {
         // Subtract all debt
         for(int i = 0; i < score_list.size(); ++i)
             value -= score_list.get(i).getDebt();
-
-        // Subtract all food
-        for(int i = 0; i < food_list.size(); ++ i)
-            value -= food_list.get(i).getCost();
 
         return value;
     }
