@@ -1,0 +1,356 @@
+<!--Navigation Sidebar Support-->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Main Layout-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cse455.pokerlog.pokerlog.SheetActivity"
+        android:orientation="vertical">
+
+        <!--Tab Support-->
+        <TabHost
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/tabHostSheets"
+            android:layout_gravity="left|center_vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                </TabWidget>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <!--Pot Layout-->
+                    <LinearLayout
+                        android:id="@+id/tabPot"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical">
+
+                        <!--Labels-->
+                        <LinearLayout
+                            android:id="@+id/potLabels"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="144dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:text="Pot Total"
+                                android:id="@+id/labelPotTotal"/>
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Pot Current"
+                                android:id="@+id/labelPotCurrent"/>
+
+                        </LinearLayout>
+
+                        <!--Data-->
+                        <LinearLayout
+                            android:id="@+id/potData"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:id="@+id/potTotal"/>
+
+                            <EditText
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:inputType="numberSigned"
+                                android:id="@+id/inputPotAmount"
+                                android:hint="+/-"
+                                android:imeOptions="actionDone"
+                                android:maxLength="5"/>
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="0"
+                                android:id="@+id/potCurrent"/>
+
+                        </LinearLayout>
+
+                        <!--Food Labels-->
+                        <LinearLayout
+                            android:id="@+id/foodLabels"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="144dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Player"
+                                android:id="@+id/labelFoodPlayer"/>
+
+                            <TextView
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Food Cost"
+                                android:id="@+id/labelFoodCost"/>
+
+                            <TextView
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Action"
+                                android:id="@+id/labelFoodAction"/>
+
+                        </LinearLayout>
+
+                        <!--Food Inputs-->
+                        <LinearLayout
+                            android:id="@+id/foodInput"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <AutoCompleteTextView
+                                android:layout_width="144dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:imeOptions="actionNext"
+                                android:hint="Player"
+                                android:id="@+id/inputFoodPlayer"/>
+
+                            <EditText
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:id="@+id/inputFoodCost"
+                                android:hint="$"
+                                android:maxLength="3"
+                                android:imeOptions="actionDone"/>
+
+                            <Button
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Add"
+                                android:id="@+id/buttonAddFood"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+
+                        <!--Food List-->
+                        <ListView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/foodListView" />
+
+                    </LinearLayout>
+
+                    <!--Score Layout-->
+                    <LinearLayout
+                        android:id="@+id/tabGame"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical">
+
+                        <!--Labels-->
+                        <LinearLayout
+                            android:id="@+id/gameLabels"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Player"
+                                android:id="@+id/labelName"/>
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Chips"
+                                android:id="@+id/labelChips"/>
+
+                            <TextView
+                                android:layout_width="144dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:text="Pot"
+                                android:id="@+id/labelPot"/>
+
+                        </LinearLayout>
+
+                        <!--Score List-->
+                        <ListView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/scoreListView" />
+
+                    </LinearLayout>
+
+                    <!--Side Bet Layout-->
+                    <LinearLayout
+                        android:id="@+id/tabSideBets"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical">
+
+                        <!--Labels-->
+                        <LinearLayout
+                            android:id="@+id/sideBetLabels"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Winner"
+                                android:id="@+id/labelWinner"/>
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Loser"
+                                android:id="@+id/labelLoser"/>
+
+                            <TextView
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Amount"
+                                android:id="@+id/labelBetAmount"/>
+
+                            <TextView
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Action"
+                                android:id="@+id/labelBetAction"/>
+
+                        </LinearLayout>
+
+                        <!--Side Bet Inputs-->
+                        <LinearLayout
+                            android:id="@+id/sideBetInputs"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <AutoCompleteTextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:maxLength="64"
+                                android:imeOptions="actionNext"
+                                android:hint="Winner"
+                                android:id="@+id/inputWinner"/>
+
+                            <AutoCompleteTextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:maxLength="64"
+                                android:imeOptions="actionNext"
+                                android:hint="Loser"
+                                android:id="@+id/inputLoser"/>
+
+                            <EditText
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:imeOptions="actionDone"
+                                android:hint="$"
+                                android:id="@+id/inputSideBetAmount"
+                                android:maxLength="3"/>
+
+                            <Button
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Add"
+                                android:id="@+id/buttonAddSideBet"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+
+                        <!--Side Bet List-->
+                        <ListView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/sideBetListView" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </TabHost>
+
+    </LinearLayout>
+    
+    <!--Navigation Sidebar-->
+    <ListView android:id="@+id/left_drawer"
+        style="@style/DrawerStyle"/>
+
+</android.support.v4.widget.DrawerLayout>

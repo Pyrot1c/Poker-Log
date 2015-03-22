@@ -54,12 +54,16 @@ public class StarActivity extends ActionBarActivity {
                         intent.setClass(view.getContext(), MainActivity.class);
                         break;
                     case 1:
+                        intent.setClass(view.getContext(), SheetActivity.class);
+                        break;
+                    case 2:
                         intent.setClass(view.getContext(), StarActivity.class);
                         break;
                     default:
-                        intent.setClass(view.getContext(), SplashScreen.class);
+                        intent.setClass(view.getContext(), TotalActivity.class);
                 }
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -77,29 +81,6 @@ public class StarActivity extends ActionBarActivity {
         // Connect the stars list to the list view
         starListView = (ListView) findViewById(R.id.starlist_view);
         starListView.setAdapter(starAdapter);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_star, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private class StarListAdapter extends ArrayAdapter<Star> {
@@ -184,7 +165,7 @@ public class StarActivity extends ActionBarActivity {
 
         // Create a star item
         Contact star_contact = dbHandler.getContact(item.getItemId());
-        Star star = new Star(dbHandler.getStarsCount(), star_contact, 0);
+        Star star = new Star(dbHandler.getStarsCount() + 1, star_contact, 0);
 
         // Add the star item if it doesn't exist
         if (!starExists(star)) {
@@ -195,6 +176,7 @@ public class StarActivity extends ActionBarActivity {
             return true;
         }
 
+        // Display an error
         Toast.makeText(getApplicationContext(), "That player is already active in stars!", Toast.LENGTH_SHORT).show();
 
         return true;

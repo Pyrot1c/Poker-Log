@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cse455.pokerlog.pokerlog" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -22,11 +24,20 @@
         <!-- Main activity -->
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/title_activity_roster" >
         </activity>
         <activity
             android:name=".StarActivity"
             android:label="@string/title_activity_star" >
+        </activity>
+        <activity
+            android:name=".SheetActivity"
+            android:label="@string/title_activity_sheet"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity
+            android:name=".TotalActivity"
+            android:label="@string/title_activity_total" >
         </activity>
     </application>
 
