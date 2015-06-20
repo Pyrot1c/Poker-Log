@@ -186,7 +186,7 @@ public class SheetActivity extends ActionBarActivity {
 
                 // Add the Food item
                 Food food = new Food(dbHandler.getFoodCount() + 1, dbHandler.getContact(player_id), food_cost);
-                dbHandler.createFood(food);
+                food.setId(dbHandler.createFood(food));
                 food_list.add(food);
                 foodAdapter.notifyDataSetChanged();
                 pot_current = calcPotCurrent();
@@ -304,8 +304,8 @@ public class SheetActivity extends ActionBarActivity {
                 }
 
                 // Add the Side Bet
-                SideBet side_bet = new SideBet(dbHandler.getSideBetsCount() + 1, dbHandler.getContact(winner_id), dbHandler.getContact(loser_id), bet_amount);
-                dbHandler.createSideBet(side_bet);
+                SideBet side_bet = new SideBet(dbHandler.getContact(winner_id), dbHandler.getContact(loser_id), bet_amount);
+                side_bet.setId(dbHandler.createSideBet(side_bet));
                 side_bet_list.add(side_bet);
                 sideBetAdapter.notifyDataSetChanged();
                 scoreAdapter.notifyDataSetChanged();
@@ -411,8 +411,8 @@ public class SheetActivity extends ActionBarActivity {
             value += score_item.getWinnings();
 
             for(int i = 0; i < side_bet_list.size(); ++i) {
-                int current_winner = side_bet_list.get(i).getWinner().getId();
-                int current_loser = side_bet_list.get(i).getLoser().getId();
+                long current_winner = side_bet_list.get(i).getWinner().getId();
+                long current_loser = side_bet_list.get(i).getLoser().getId();
 
                 if (score_item.getPlayer().getId() == current_winner)
                     value += side_bet_list.get(i).getAmount();

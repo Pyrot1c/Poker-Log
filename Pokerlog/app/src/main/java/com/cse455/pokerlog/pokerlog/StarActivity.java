@@ -165,11 +165,11 @@ public class StarActivity extends ActionBarActivity {
 
         // Create a star item
         Contact star_contact = dbHandler.getContact(item.getItemId());
-        Star star = new Star(dbHandler.getStarsCount() + 1, star_contact, 0);
+        Star star = new Star(star_contact, 0);
 
         // Add the star item if it doesn't exist
         if (!starExists(star)) {
-            dbHandler.createStar(star);
+            star.setId(dbHandler.createStar(star));
             star_list.add(star);
             starAdapter.notifyDataSetChanged();
             Toast.makeText(getApplicationContext(), "Player added to star keeper!", Toast.LENGTH_SHORT).show();

@@ -109,7 +109,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Contact Functions
     ------------------------*/
 
-    public void createContact(Contact contact) {
+    public int createContact(Contact contact) {
         // Open the database
         SQLiteDatabase db = getWritableDatabase();
 
@@ -122,12 +122,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_ADDRESS, contact.getAddress());
 
         // Insert the contact
-        db.insert(TABLE_CONTACTS, null, values);
+        long row_id = db.insert(TABLE_CONTACTS, null, values);
 
         // Create a new score item for the player
         values = new ContentValues();
 
-        values.put(KEY_PLAYER_ID, contact.getId() + 1);
+        values.put(KEY_PLAYER_ID, row_id);
         values.put(KEY_WINNINGS, 0);
         values.put(KEY_DEBT, 0);
 
@@ -135,6 +135,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // Clean up
         db.close();
+
+        return (int)row_id;
     }
 
     public void deleteContact(Contact contact) {
@@ -429,7 +431,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Side Bet Functions
     ------------------------*/
 
-    public void createSideBet(SideBet side_bet) {
+    public int createSideBet(SideBet side_bet) {
         // Open the database
         SQLiteDatabase db = getWritableDatabase();
 
@@ -441,10 +443,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_AMOUNT, side_bet.getAmount());
 
         // Insert the new data
-        db.insert(TABLE_SIDEBETS, null, values);
+        long row_index = db.insert(TABLE_SIDEBETS, null, values);
 
         // Clean up
         db.close();
+
+        return (int)row_index;
     }
 
     public void deleteSideBet(SideBet side_bet) {
@@ -552,7 +556,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Star Functions
     ------------------------*/
 
-    public void createStar(Star star) {
+    public int createStar(Star star) {
         // Open the database
         SQLiteDatabase db = getWritableDatabase();
 
@@ -563,10 +567,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_COUNT, star.getCount());
 
         // Insert the new data
-        db.insert(TABLE_STARS, null, values);
+        long row_index = db.insert(TABLE_STARS, null, values);
 
         // Clean up
         db.close();
+
+        return (int)row_index;
     }
 
     public void deleteStar(Star star) {
@@ -679,7 +685,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Food Functions
     ------------------------*/
 
-    public void createFood(Food food) {
+    public int createFood(Food food) {
         // Open the database
         SQLiteDatabase db = getWritableDatabase();
 
@@ -690,10 +696,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_COST, food.getCost());
 
         // Insert the new data
-        db.insert(TABLE_FOOD, null, values);
+        long row_index = db.insert(TABLE_FOOD, null, values);
 
         // Clean up
         db.close();
+
+        return (int)row_index;
     }
 
     public void deleteFood(Food food) {

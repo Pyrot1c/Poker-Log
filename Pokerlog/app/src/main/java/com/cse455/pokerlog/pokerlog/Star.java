@@ -10,6 +10,11 @@ public class Star {
 
     private Contact _owner;
 
+    public Star(Contact owner, int count) {
+        _owner = owner;
+        _count = count;
+    }
+
     public Star(int id, Contact owner, int count) {
         _id = id;
         _owner = owner;
@@ -19,6 +24,7 @@ public class Star {
     void decrement() { if (_count > 0) --_count; }
     void increment() { if (_count < 1000) ++_count; }
 
+    public void setId(int id) { _id = id; }
     public int getId() { return _id; }
 
     public Contact getOwner() { return _owner; }

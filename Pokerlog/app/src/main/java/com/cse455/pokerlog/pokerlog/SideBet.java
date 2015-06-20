@@ -10,6 +10,12 @@ public class SideBet {
 
     private Contact _winner, _loser;
 
+    public SideBet(Contact winner, Contact loser, int amount) {
+        _winner = winner;
+        _loser = loser;
+        _amount = amount;
+    }
+
     public SideBet(int id, Contact winner, Contact loser, int amount) {
         _id = id;
         _winner = winner;
@@ -17,6 +23,7 @@ public class SideBet {
         _amount = amount;
     }
 
+    public void setId(int id) { _id = id; }
     public int getId() { return _id; }
 
     public Contact getWinner() { return _winner; }

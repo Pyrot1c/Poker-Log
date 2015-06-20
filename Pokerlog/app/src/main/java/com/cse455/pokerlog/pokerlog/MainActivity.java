@@ -92,9 +92,9 @@ public class MainActivity extends ActionBarActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Contact contact = new Contact(dbHandler.getContactsCount(), String.valueOf(nameTxt.getText()), String.valueOf(phoneTxt.getText()), String.valueOf(emailTxt.getText()), String.valueOf(addressTxt.getText()));
+                Contact contact = new Contact(String.valueOf(nameTxt.getText()), String.valueOf(phoneTxt.getText()), String.valueOf(emailTxt.getText()), String.valueOf(addressTxt.getText()));
                 if (!contactExists(contact)) {
-                    dbHandler.createContact(contact);
+                    contact.setId(dbHandler.createContact(contact));
                     contact_list.add(contact);
                     contactAdapter.notifyDataSetChanged();
                     Toast.makeText(getApplicationContext(), String.valueOf(nameTxt.getText()) + " has been added to your contact_list!", Toast.LENGTH_SHORT).show();
@@ -165,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
         menu.setHeaderIcon(R.drawable.pencil_icon);
         menu.setHeaderTitle("Contact Options");
         menu.add(Menu.NONE, DELETE, menu.NONE, "Delete Contact");
+
     }
 
     public boolean onContextItemSelected(MenuItem item) {
